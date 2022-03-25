@@ -33,7 +33,7 @@ struct FeedView: View {
                 .clipShape(Circle())
                 .padding()
                 .fullScreenCover(isPresented: $showNewTweetModal) {
-                    Text("kfkfk")
+                    NewTweetView()
                 }
         }
     }
@@ -41,6 +41,6 @@ struct FeedView: View {
 
 struct Feed_Previews: PreviewProvider {
     static var previews: some View {
-        FeedView()
+       FeedView()
     }
 }

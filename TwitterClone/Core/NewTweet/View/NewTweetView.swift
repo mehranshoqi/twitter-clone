@@ -8,18 +8,26 @@
 import SwiftUI
 
 struct NewTweetView: View {
+    @State private var caption: String = ""
     var body: some View {
         VStack {
            topActions
+            HStack(alignment: .top) {
+                Circle()
+                    .frame(width: 56, height: 56)
+                
+                TextArea("What's new ?", text: $caption )
+            }.padding(12)
         }
     }
 }
 
-struct NewTweetView_Previews: PreviewProvider {
+struct NewTweetView_Preview: PreviewProvider {
     static var previews: some View {
         NewTweetView()
     }
 }
+
 
 
 extension NewTweetView {
@@ -46,5 +54,7 @@ extension NewTweetView {
             .background(Color(.systemBlue))
             .clipShape(Capsule())
         }.padding()
+        
+       
     }
 }

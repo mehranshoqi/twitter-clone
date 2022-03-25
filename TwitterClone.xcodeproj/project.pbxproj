@@ -26,6 +26,7 @@
 		0272B27327ECDB99003145AA /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0272B27227ECDB99003145AA /* SideMenuViewModel.swift */; };
 		0272B27527ECDDBE003145AA /* UserStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0272B27427ECDDBE003145AA /* UserStatsView.swift */; };
 		0272B27A27ED1A1C003145AA /* NewTweetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0272B27927ED1A1C003145AA /* NewTweetView.swift */; };
+		02878B4127EDF9D300330DE0 /* TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02878B4027EDF9D300330DE0 /* TextArea.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		0272B27227ECDB99003145AA /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 		0272B27427ECDDBE003145AA /* UserStatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStatsView.swift; sourceTree = "<group>"; };
 		0272B27927ED1A1C003145AA /* NewTweetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTweetView.swift; sourceTree = "<group>"; };
+		02878B4027EDF9D300330DE0 /* TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextArea.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				0272B24E27ECAA5D003145AA /* SingleTweet */,
+				02878B4027EDF9D300330DE0 /* TextArea.swift */,
 			);
 			path = Tweets;
 			sourceTree = "<group>";
@@ -192,7 +195,6 @@
 			isa = PBXGroup;
 			children = (
 				0272B25627ECB1DD003145AA /* View */,
-				0272B25427ECB1D8003145AA /* MainTabView.swift */,
 			);
 			path = MainTab;
 			sourceTree = "<group>";
@@ -200,6 +202,7 @@
 		0272B25627ECB1DD003145AA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0272B25427ECB1D8003145AA /* MainTabView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				0272B26E27ECDB70003145AA /* SideMenuView.swift in Sources */,
 				0272B24D27ECA6F2003145AA /* TweetsRowView.swift in Sources */,
 				0272B25227ECABB6003145AA /* TweetActions.swift in Sources */,
+				02878B4127EDF9D300330DE0 /* TextArea.swift in Sources */,
 				0272B27527ECDDBE003145AA /* UserStatsView.swift in Sources */,
 				0272B25527ECB1D8003145AA /* MainTabView.swift in Sources */,
 				0272B27A27ED1A1C003145AA /* NewTweetView.swift in Sources */,
