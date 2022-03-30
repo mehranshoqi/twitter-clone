@@ -9,9 +9,10 @@ import SwiftUI
 
 struct NewTweetView: View {
     @State private var caption: String = ""
+    
     var body: some View {
         VStack {
-           topActions
+           TopActions()
             HStack(alignment: .top) {
                 Circle()
                     .frame(width: 56, height: 56)
@@ -30,11 +31,13 @@ struct NewTweetView_Preview: PreviewProvider {
 
 
 
-extension NewTweetView {
-    var topActions: some View {
+struct TopActions: View {
+    @Environment(\.presentationMode) var presentaionMode
+    
+    var body: some View {
         HStack{
             Button {
-                //
+                presentaionMode.wrappedValue.dismiss()
             } label: {
                  Text("Cancel")
                     .font(.subheadline)

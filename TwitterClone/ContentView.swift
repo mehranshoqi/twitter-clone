@@ -9,9 +9,31 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var sideMenuToggler: Bool = false
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     
     
     var body: some View {
+        Group {
+            if let userSession = authViewModel.userSession {
+                authenticatedUser
+            } else {
+                LoginView()
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+
+extension ContentView {
+    var authenticatedUser: some View {
         ZStack(alignment: .topLeading) {
             MainTabView().navigationBarHidden(sideMenuToggler)
             
@@ -45,11 +67,5 @@ struct ContentView: View {
             }.onAppear{
                 sideMenuToggler = false
             }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
