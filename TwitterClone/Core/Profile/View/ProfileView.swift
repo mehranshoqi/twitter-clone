@@ -6,11 +6,18 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ProfileView: View {
     @State private var selectedFilter: TweetFilterViewModel = .tweet
     @Environment(\.presentationMode) var mode
     @Namespace var animation
+    @EnvironmentObject private var authViewModel: AuthViewModel
+    private let user: User
+
+    init(user: User) {
+        self.user = user
+    }
     
     var body: some View {
         VStack{
@@ -31,11 +38,11 @@ struct ProfileView: View {
     }
 }
 
-struct ProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        ProfileView()
-    }
-}
+//struct ProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ProfileView()
+//    }
+//}
 
 extension ProfileView {
     var headerView: some View {
@@ -54,8 +61,12 @@ extension ProfileView {
                         .offset(x: 12, y: 10)
                 }
                 
-                Circle()
+                // user photo
+                KFImage(URL(string: authViewModel.currentUser?.profileImageUrl ?? ""))
+                    .resizable()
+                    .scaledToFill()
                     .frame(width: 72, height: 72)
+                    .clipShape(Circle())
                     .offset(x: 16, y: 24)
             }
             
@@ -91,7 +102,7 @@ extension ProfileView {
         VStack(alignment: .leading,spacing: 4) {
             // name
             HStack {
-                Text("Mehran Shoghi")
+                Text(user.fullName)
                     .font(.title2)
                     .bold()
                 
@@ -102,7 +113,7 @@ extension ProfileView {
                 Spacer()
             }
             // username
-            Text("@mehranshoghi")
+            Text("@\(user.username)")
                 .foregroundColor(.gray)
                 .font(.subheadline)
             

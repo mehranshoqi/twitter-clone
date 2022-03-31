@@ -11,6 +11,7 @@ struct PhotoSelectorView: View {
     @State private var showSheet = false
     @State private var selectedImage: UIImage?
     @State private var profileImage: Image?
+    @EnvironmentObject private var authViewModel: AuthViewModel
     
     var body: some View {
         VStack {
@@ -36,9 +37,9 @@ struct PhotoSelectorView: View {
             
             Spacer()
             
-            if profileImage != nil {
+            if let selectedImage = selectedImage {
                 Button {
-                    //
+                    authViewModel.uploadUserProfilePhoto(selectedImage)
                 } label: {
                     Text("Continue")
                         .font(.headline)

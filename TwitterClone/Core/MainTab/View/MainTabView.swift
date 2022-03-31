@@ -30,11 +30,11 @@ struct MainTabView: View {
                 Image(systemName: "bell")
             }.tag(2)
             
-            ProfileView().onTapGesture {
-                selevtedTabIndex = 3
-            }.tabItem {
-                Image(systemName: "envelope")
-            }.tag(3)
+//            ProfileView().onTapGesture {
+//                selevtedTabIndex = 3
+//            }.tabItem {
+//                Image(systemName: "envelope")
+//            }.tag(3)
         }
     }
 }

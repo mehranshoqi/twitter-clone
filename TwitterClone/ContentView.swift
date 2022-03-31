@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct ContentView: View {
     @State private var sideMenuToggler: Bool = false
@@ -60,8 +61,10 @@ extension ContentView {
                             sideMenuToggler.toggle()
                         }
                     } label: {
-                         Circle()
-                            .frame(width: 20, height: 20)
+                        KFImage(URL(string: authViewModel.currentUser?.profileImageUrl ?? ""))
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                            .padding(.bottom, 8)
                     }
                 }
             }.onAppear{

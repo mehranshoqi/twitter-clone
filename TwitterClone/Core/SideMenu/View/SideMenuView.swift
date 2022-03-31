@@ -6,13 +6,26 @@
 //
 
 import SwiftUI
+import Kingfisher
+
 
 struct SideMenuView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     
-    var body: some View {
+    var body: some View{
         VStack(alignment: .leading) {
-            userInfo
+            VStack(alignment: .leading, spacing: 4) {
+                KFImage(URL(string: authViewModel.currentUser?.profileImageUrl ?? ""))
+                    .resizable()
+                    .frame(width: 48, height: 48)
+                    .padding(.bottom, 8)
+                Text(authViewModel.currentUser?.fullName ?? "Nil")
+                    .font(.headline)
+                Text("@\(authViewModel.currentUser?.username ?? "Nil")")
+                    .foregroundColor(.gray)
+                    .font(.caption)
+                UserStatsView()
+            }.padding()
             
             sideMenuOptions
             
@@ -29,21 +42,11 @@ struct SideMenuView_Previews: PreviewProvider {
 }
 
 
-extension SideMenuView {
-    var userInfo: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Circle()
-                .frame(width: 48, height: 48)
-                .padding(.bottom, 8)
-            Text("Mehran Shoghi")
-                .font(.headline)
-            Text("@mehranshoghi")
-                .foregroundColor(.gray)
-                .font(.caption)
-            UserStatsView()
-        }.padding()
-    }
-}
+//extension SideMenuView {
+//    var userInfo: some View {
+//
+//    }
+//}
 
 
 extension SideMenuView {
@@ -59,7 +62,9 @@ extension SideMenuView {
             else {
                 NavigationLink {
                     if option == .profile {
-                        ProfileView()
+                        if let user = authViewModel.currentUser {
+                            ProfileView(user: user)
+                        }
                     }
                 } label: {
                     SideMenuRowView(option: option)

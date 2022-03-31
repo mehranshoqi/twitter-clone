@@ -12,10 +12,14 @@ import Firebase
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
     @Published var didRegisteredUser: Bool = false
+    @Published var currentUser: User?
     private var tempUserSession: FirebaseAuth.User?
+    private var userService = UserService()
+    
     
     init() {
         self.userSession = Auth.auth().currentUser
+        self.fetchUser()
     }
     
     func login(email: String, password: String ){
@@ -41,7 +45,6 @@ class AuthViewModel: ObservableObject {
             let userData = ["email": email, "username": username, "fullName": fullName, "uid": user.uid]
                 
             Firestore.firestore().collection("users").document(user.uid).setData(userData) { _ in
-                print("save new user information! :D")
                 self.didRegisteredUser = true
             }
         }
@@ -53,7 +56,7 @@ class AuthViewModel: ObservableObject {
     }
     
     func uploadUserProfilePhoto(_ image: UIImage) {
-        guard let uid = userSession?.uid else { return }
+        guard let uid = tempUserSession?.uid else { return }
         
         ImageUploader.uploadImage(image: image) { profileImageUrl in
             Firestore.firestore().collection("users")
@@ -63,5 +66,13 @@ class AuthViewModel: ObservableObject {
                 }
             
         }
+    }
+    
+    func fetchUser() {
+        guard let uid = self.userSession?.uid else { return }
+        self.userService.fetchUser(uid) { user in
+            self.currentUser = user
+        }
+        
     }
 }
